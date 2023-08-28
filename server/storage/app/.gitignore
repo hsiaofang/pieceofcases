@@ -1,0 +1,7 @@
+*
+!public/
+!.gitignore
+! documents
+! upload
+! files
+! proposalFiles

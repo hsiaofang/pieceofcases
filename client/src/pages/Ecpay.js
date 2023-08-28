@@ -1,0 +1,28 @@
+// 獲取綠界回傳的原始碼，並跳轉至付款界面
+import React, { useContext, useEffect } from "react";
+import { GlobelDate } from "../App";
+
+function Ecpay() {
+  const { ecpayHtml } = useContext(GlobelDate);
+
+  //   let HTML =
+  //     '<!DOCTYPE html><html>  <head>    <meta charset="utf-8" />  </head>  <body>    <form      id="ecpay-form"      method="POST" target="_self" action="https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5"    >      <input        type="hidden"        name="CheckMacValue"        value="1E115EE15416FF560CD9C0F0F268BC48572F153C49E9DA4CD2065CA1944853DA"      /><input type="hidden" name="ChoosePayment" value="Credit" /><input        type="hidden"        name="ClientBackURL"        value=" http://localhost:3000"      /><input type="hidden" name="EncryptType" value="1" /><input        type="hidden"        name="ItemName"        value="Test ECPay 100NT *1"      /><input type="hidden" name="MerchantID" value="2000132" /><input        type="hidden"        name="MerchantTradeDate"        value="2023/07/29 14:35:13"      /><input        type="hidden"        name="MerchantTradeNo"        value="Test10001690641313"      /><input type="hidden" name="OrderResultURL" value=" " /><input        type="hidden"        name="PaymentType"        value="aio"      /><input        type="hidden"        name="ReturnURL"        value=" https://5398-2001-b011-9807-59a3-714d-fb29-35af-f071.ngrok-free.app/index.php/callback"      /><input type="hidden" name="TotalAmount" value="1000" /><input        type="hidden"        name="TradeDesc"        value="test+ecpay"      />    </form>    <script type="text/javascript">      document.getElementById("ecpay-form").submit();    </script>  </body></html>';
+  //   let textt = "aaaa";
+  //   function createMarkup() {
+  //     return { __html: `<h1>${textt}</h1>` };
+  //   }
+  //   return <div dangerouslySetInnerHTML={createMarkup()} />;
+  useEffect(() => {
+    document.getElementById("ecpay-form").submit();
+  }, []);
+  console.log(ecpayHtml);
+  return (
+    <div
+      dangerouslySetInnerHTML={{
+        __html: `${ecpayHtml}`,
+      }}
+    />
+  );
+}
+
+export default Ecpay;

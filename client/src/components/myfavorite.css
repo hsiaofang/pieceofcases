@@ -1,0 +1,35 @@
+.case1 {
+  width: 300px;
+  margin-right: 1.2rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  min-height: 200px;
+  position: relative;
+}
+
+.moreView {
+  cursor: pointer;
+}
+
+.caseDiv {
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  margin-left: 3rem;
+}
+
+.casePag {
+  justify-content: center;
+}
+
+.caseStar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 25px;
+  height: 25px;
+  color: #ffc400;
+}
+
+.caseStar:hover {
+  cursor: pointer;
+}

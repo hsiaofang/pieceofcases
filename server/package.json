@@ -1,0 +1,22 @@
+{
+    "private": true,
+    "type": "ES module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "start": "nodemon app.js"
+    },
+    "devDependencies": {
+        "axios": "^1.1.2",
+        "laravel-vite-plugin": "^0.7.5",
+        "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "http": "^0.0.1-security",
+        "moment": "^2.29.4",
+        "mysql": "^2.18.1",
+        "react-modal": "^3.16.1",
+        "socket.io": "^4.7.1"
+    }
+}

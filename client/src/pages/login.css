@@ -1,0 +1,97 @@
+.myBody {
+  width: 100%;
+  min-height: calc(100vh - 100px);
+  background: #fff;
+}
+
+.loginDiv {
+  width: 400px;
+  height: 600px;
+  padding: 60px;
+  margin: auto 0 auto auto;
+  background-color: #ebebeb;
+  border-radius: 10px 0 0 10px;
+}
+
+.imgDiv {
+  width: 400px;
+  height: 600px;
+  padding: 60px;
+  margin: auto auto auto 0;
+  background-color: #ebebeb;
+  border-radius: 0 10px 10px 0;
+  background-image: url(https://images.pexels.com/photos/27406/pexels-photo-27406.jpg);
+  background-size: cover;
+  background-position: 50%;
+}
+
+.textAlignC {
+  text-align: center;
+}
+
+.formSize {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.inputRadiusTop {
+  border-radius: 5px 5px 0 0;
+}
+
+.inputRadiusBottom {
+  border-radius: 0 0 5px 5px;
+}
+
+.inputRadiusNull {
+  border-radius: 0;
+}
+
+.form-floating:focus-within {
+  z-index: 2;
+}
+
+.submitButton {
+  display: block;
+  margin: 0 auto;
+  background-color: #4798b3;
+  color: white;
+  margin-top: 1rem;
+}
+
+.linkCss {
+  font-size: 18px;
+}
+
+.linkCss:hover {
+  font-size: 18px;
+}
+
+.linkCssSm {
+  font-size: 14px;
+}
+
+.linkCssSm:hover {
+  font-size: 14px;
+}
+
+.textAlignR {
+  text-align: right;
+}
+
+.googleLogin {
+  height: 20px;
+}
+
+.googleButton {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid rgb(183, 185, 185);
+  background-color: #ffffff;
+  color: rgb(25, 25, 26);
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.googleLogo{
+  color: rgb(0, 85, 255);
+}

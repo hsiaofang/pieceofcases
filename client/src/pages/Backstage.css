@@ -1,0 +1,31 @@
+/* styles.css
+
+/* 設定 ul 元素的樣式 */
+/* ul {
+  list-style: none;
+  padding: 0;
+  background-color: aqua;
+} */
+
+/* 設定每一列的樣式 */
+/* li {
+  margin: 50px;
+  display: flex;
+} */
+
+/* 包含用戶和案件的外層容器的樣式 */
+/* .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+/* 用戶列表和案件列表之間的間距 */
+/* .container > div {
+  margin-top: 20px;
+} */
+
+/* 按鈕的樣式 */
+/* button {
+  margin-right: 10px;
+} */

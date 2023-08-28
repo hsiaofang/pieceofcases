@@ -1,0 +1,165 @@
+.recordDiv31 {
+  margin-top: 1rem;
+  margin-left: 3rem;
+  margin-bottom: 3rem;
+  width: 100%;
+  border: 2px solid #ffa500;
+}
+
+.span1 {
+  align-items: center;
+  width: 10%;
+  padding: 5px 0;
+  border-bottom: 2px solid #ffa500;
+  border-right: 2px solid #ffa500;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.span2 {
+  width: 10%;
+  height: 5rem;
+  padding: 10px 0;
+  border-right: 2px solid #ffa500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.del1 {
+  border-right: 0;
+}
+
+.del2 {
+  margin: 0.5rem;
+}
+
+.del2:hover {
+  cursor: pointer;
+  color: #4798b3;
+}
+
+.white1:hover {
+  color: white;
+}
+
+.progress1 {
+  padding: 0 4rem;
+  height: 10rem;
+  border-top: 2px solid #ffa500;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress-bar {
+  background-color: #4798b3;
+}
+
+.prog1 {
+  top: 3rem;
+  width: calc(100% - 8rem);
+  border-radius: 0.5rem;
+  height: 3px;
+  background-color: #b8b8b8;
+  position: absolute;
+}
+
+.progCircle {
+  z-index: 2;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #b8b8b8;
+}
+
+.deadLine {
+  position: relative;
+  right: 2rem;
+  width: 5rem;
+}
+
+.progressCircle {
+  width: 1px;
+  z-index: 3;
+  height: 5rem;
+  position: relative;
+  top: 5px;
+}
+
+.right1 {
+  position: relative;
+  right: 1rem;
+}
+
+.btn1 {
+  width: 3rem;
+  height: 25px;
+  line-height: 25px;
+  background-color: #d3d3d3;
+  text-align: center;
+  border: 1px solid #474747;
+  border-radius: 0.4rem;
+  position: absolute;
+  right: calc(-1.5rem - 5px);
+  top: -35px;
+}
+
+.btn1:hover {
+  cursor: pointer;
+  background-color: #ffa500;
+  color: white;
+  border: 0;
+}
+
+.arrow2 {
+  color: #ffa500;
+  display: block;
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 4rem;
+  height: 2rem;
+  border: 2px solid #ffa500;
+  border-bottom: 0;
+  border-radius: 0.5rem 0.5rem 0 0;
+  /* transform: scaleY(-1); */
+}
+
+.arrow2:hover {
+  cursor: pointer;
+  border: 0;
+  color: white;
+  background-color: #ffa500;
+}
+
+.arrowDiv {
+  position: relative;
+  height: 0;
+}
+
+.caseMoney {
+  display: none;
+}
+
+.right1:hover {
+  cursor: pointer;
+}
+
+.right1:hover + .caseMoney {
+  display: block;
+  font-size: 0.9rem;
+  box-sizing: content-box;
+  width: 150px;
+  position: relative;
+  right: 3rem;
+  bottom: 7.5rem;
+  width: 5rem;
+  border: 2px solid #ffa500;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 10px;
+}

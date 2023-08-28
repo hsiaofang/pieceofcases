@@ -1,0 +1,137 @@
+.myBody {
+  width: 100%;
+  min-height: calc(100vh - 100px);
+  background: #fff;
+}
+
+.registerDiv {
+  width: 400px;
+  height: 600px;
+  padding: 60px;
+  margin: auto auto auto 0;
+  background-color: #ebebeb;
+  border-radius: 0 10px 10px 0;
+}
+
+.imgDiv1 {
+  width: 400px;
+  height: 600px;
+  padding: 60px;
+  margin: auto 0 auto auto;
+  background-color: #ebebeb;
+  border-radius: 10px 0 0 10px;
+  background-image: url(https://images.pexels.com/photos/65438/pexels-photo-65438.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-size: cover;
+  background-position: 50%;
+}
+
+.textAlignC {
+  text-align: center;
+}
+
+.formSize {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.inputRadiusTop {
+  border-radius: 5px 5px 0 0;
+}
+
+.inputRadiusBottom {
+  border-radius: 0 0 5px 5px;
+}
+
+.inputRadiusNull {
+  border-radius: 0;
+}
+
+.form-floating:focus-within {
+  z-index: 2;
+}
+
+.submitButton {
+  display: block;
+  margin: 0 auto;
+  background-color: #4798b3;
+  color: white;
+  margin-top: 1rem;
+}
+
+.linkCss {
+  font-size: 18px;
+}
+
+.linkCss:hover {
+  font-size: 18px;
+}
+
+input[type="text"] {
+  width: 100%;
+  margin-bottom: 0;
+  border-radius: 5px 5px 0 0;
+}
+
+.contaner .strengthMeter {
+  margin-top: 5px;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: #ebebeb;
+}
+
+.contaner .strengthMeter::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 100%;
+  transition: 0.5s;
+  background: #f00;
+}
+
+.contaner.weak .strengthMeter::before {
+  width: 10%;
+  background: #f00;
+}
+
+.contaner.moderate .strengthMeter::before {
+  width: 55%;
+  background: #cebf3b;
+}
+
+.contaner.strong .strengthMeter::before {
+  width: 100%;
+  background: #18e605;
+}
+
+.contaner .strengthMeter::after {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  transition: 0.5s;
+  color: aliceblue;
+  font-size: 10px;
+}
+
+.contaner.weak .strengthMeter::after {
+  content: "強度:弱";
+  color: #f00;
+}
+
+.contaner.moderate .strengthMeter::after {
+  content: "強度:中";
+  color: #cebf3b;
+}
+
+.contaner.strong .strengthMeter::after {
+  content: "強度:強";
+  color: #18e605;
+}
+
+.passwordCheck {
+  color: #f00;
+  font-size: 10px;
+  padding: 20px 0 0 5px;
+}
