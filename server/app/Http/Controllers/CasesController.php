@@ -443,63 +443,6 @@ class CasesController extends Controller
 }
 
 
-//     // 獲取歷史紀錄
-//     public function getSearchHistory()
-// {
-//     $history = Redis::lrange('search_history', 0, -1);
-//     return response()->json($history);
-// }
-
-
-
-//     // //即時搜尋案件
-//     public function search(Request $request)
-//     {
-//         $keyword = $request->input('q');
-//         $results = [];
-
-//         // 先檢查緩存中是否有搜尋結果
-//         $cachedResults = Redis::get("search:{$keyword}");
-//         if ($cachedResults) {
-//             $results = json_decode($cachedResults, true);
-//         } else {
-//             // 如果緩存中沒有，則從數據庫中進行搜尋
-//             $results = DB::table('mycase')
-//                 ->where('caseName', 'LIKE', "%{$keyword}%")
-//                 ->get();
-
-//             // 將搜索結果存儲到緩存中，有效期可根據需要設置
-//             Redis::setex("search:{$keyword}", 3600, json_encode($results));
-//         }
-
-//         return response()->json($results);
-//     }
-
-
-
-
-
-    // public function search(Request $request)
-    // {
-    //     $keyword = $request->input('keyword');
-
-    //     $searchResults = [];
-
-    //     if ($keyword) {
-    //         // 尝试从 Redis 中获取搜索结果
-    //         $searchResults = Redis::get("search:$keyword");
-
-    //         // 如果在 Redis 中没有找到搜索结果，从数据库中获取
-    //         if (!$searchResults) {
-    //             $searchResults = Movie::where('title', 'like', "%$keyword%")->get();
-    //             Redis::setex("search:$keyword", 3600, json_encode($searchResults));
-    //         } else {
-    //             $searchResults = json_decode($searchResults);
-    //         }
-    //     }
-
-    //     return response()->json($searchResults);
-    // }
 
 
    
@@ -507,48 +450,13 @@ class CasesController extends Controller
 
 
 
-    
-
-
-//     public function getSearchHistory()
-// {
-//     $searchHistoryValue = Redis::get('search_history'); // 获取键为 'search_history' 的值
-
-//     return response()->json([
-//         'search_history_value' => $searchHistoryValue
-//     ]);
-// }
-
-// public function getSearchHistory()
-// {
-//     // 获取有序集合中的数据
-//     $searchHistory = Redis::zrange('search_history', 0, -1, 'WITHSCORES');
-
-//     // 将数据按照时间排序
-//     arsort($searchHistory, SORT_NUMERIC);
-
-//     // 构建返回的数据数组
-//     $searchResults = [];
-//     foreach ($searchHistory as $keyword => $timestamp) {
-//         $searchResults[] = [
-//             'keyword' => $keyword,
-//             'timestamp' => (int) $timestamp,
-//             'formatted_timestamp' => date('Y-m-d H:i:s', $timestamp),
-//         ];
-//     }
-
-//     return response()->json($searchResults);
-// }
-
 
 
     public function getSearchHistory()
     {
-        // 获取有序集合中的数据
         $searchHistory = Redis::zrange('search_history', 0, -1, 'WITHSCORES');
 
 
-        // 将数据按照时间排序
         $indexedSearchHistory = [];
         $count = count($searchHistory);
         for ($i = 0; $i < $count; $i += 2) {
@@ -556,7 +464,6 @@ class CasesController extends Controller
         }
         arsort($indexedSearchHistory, SORT_NUMERIC);
 
-        // 构建返回的数据数组
         $searchResults = [];
         foreach ($indexedSearchHistory as $keyword => $timestamp) {
             $searchResults[] = [
@@ -574,72 +481,64 @@ class CasesController extends Controller
 
 
 
-public function searchCases(Request $request)
-{
-    $keyword = $request['searchKeyword'];
+    public function searchCases(Request $request)
+    {
+        $keyword = $request['searchKeyword'];
 
-    // 使用 Redis 的 SMEMBERS 命令获取所有案件名
-    $allCasesBinary = Redis::smembers('cases');
+        $allCasesBinary = Redis::smembers('cases');
 
-    $filteredCases = [];
+        $filteredCases = [];
 
-    // 在所有案件名中筛选出包含关键字的案件名
-    foreach ($allCasesBinary as $caseBinary) {
-        // 将二进制数据解码为 UTF-8 字符串
-        $caseUtf8 = mb_convert_encoding($caseBinary, 'UTF-8', 'binary');
-        echo "Keyword: $keyword | Case: $caseUtf8\n"; // 添加这行调试语句
+        foreach ($allCasesBinary as $caseBinary) {
+            $caseUtf8 = mb_convert_encoding($caseBinary, 'UTF-8', 'binary');
+            echo "Keyword: $keyword | Case: $caseUtf8\n"; 
+            if (strpos($caseUtf8, $keyword) !== false) {
 
-        if (strpos($caseUtf8, $keyword) !== false) {
-            // 如果案件名包含关键字，将其添加到结果数组中
-            $filteredCases[] = $caseUtf8;
+                $filteredCases[] = $caseUtf8;
+            }
         }
+
+        return response()->json([
+            'filteredCases' => $filteredCases,
+            'message' => "Search results for $keyword",
+        ]);
+
+
+
+
     }
 
-    return response()->json([
-        'filteredCases' => $filteredCases,
-        'message' => "Search results for $keyword",
-    ]);
+    public function autoComplete(Request $request)
+    {
+        $searchTerm = $request->query('newTerm');
 
 
+        $caseNames = [
+            '水管爆掉',
+            '水電消防半技工',
+            '電路維修',
+            '搬家人員',
+            '搬家清潔',
+            '國中數學',
+            '國中理化',
+            '國二數學',
+            '折紙鶴',
+            '折蓮花',
+            '國二數學',
 
+        ];
 
-}
+        $suggestions = [];
 
-public function autoComplete(Request $request)
-{
-    $searchTerm = $request->query('newTerm');
-    // dd($searchTerm); // 输出输入的值，确保接收到了正确的值
-
-
-    $caseNames = [
-        '水管爆掉',
-        // '水箱搬運',
-        // '水管維修',
-        '水電消防半技工',
-        '電路維修',
-        '搬家人員',
-        '搬家清潔',
-        '國中數學',
-        '國中理化',
-        '國二數學',
-        '折紙鶴',
-        '折蓮花',
-        '國二數學',
-
-        // ...加入其他案件名稱
-    ];
-
-    $suggestions = [];
-
-    foreach ($caseNames as $caseName) {
-        if (mb_substr($caseName, 0, mb_strlen($searchTerm)) === $searchTerm) {
-            $suggestions[] = $caseName;
+        foreach ($caseNames as $caseName) {
+            if (mb_substr($caseName, 0, mb_strlen($searchTerm)) === $searchTerm) {
+                $suggestions[] = $caseName;
+            }
         }
+
+        return response()->json($suggestions);
+
     }
-
-    return response()->json($suggestions);
-
-}
 
 
 
